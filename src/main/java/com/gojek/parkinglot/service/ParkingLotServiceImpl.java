@@ -14,16 +14,15 @@ import com.gojek.parkinglot.utilities.ParkingLotException;
 public class ParkingLotServiceImpl implements ParkingLotService {
 	private int totalParkingSlots;
 
-	private List<Integer> availableSlots;
+	private List<Integer> availableSlots=new ArrayList<Integer>();	
 
-	private Map<Integer, ParkingInvoice> parkingInvoices;
+	private Map<Integer, ParkingInvoice> parkingInvoices=new HashMap<Integer, ParkingInvoice>();;
 
 
 
 	public ParkingInvoice parkCar(Car car) throws ParkingLotException {
 		if (availableSlots.size() == 0) {
-			System.out.println("No parking slots are available");
-			throw new ParkingLotException("noParkingSlotsAvailable","No parking slots are available");
+			throw new ParkingLotException("noParkingSlotsAvailable","Sorry, parking lot is full");
 		} else {
 			ParkingInvoice parkingInvoice = new ParkingInvoice();
 			ParkingLot parkingLot = new ParkingLot();
@@ -32,7 +31,7 @@ public class ParkingLotServiceImpl implements ParkingLotService {
 		    parkingInvoice.setParkingLot(parkingLot);
 			parkingInvoices.put(availableSlots.get(0), parkingInvoice);
 			availableSlots.remove(0);
-			System.out.println("Alloted the slot"+parkingInvoice.getParkingLot().getSlotNumber());
+			System.out.println("Allocated slot number: "+parkingInvoice.getParkingLot().getSlotNumber());
 			return parkingInvoice;
 		}
 	}
@@ -42,11 +41,9 @@ public class ParkingLotServiceImpl implements ParkingLotService {
 
 		ParkingInvoice parkingInvoice = parkingInvoices.get(slotNumber);
 		if (parkingInvoice != null) {
-			System.out.println("In hte slot remove");
-			parkingInvoices.remove(parkingInvoice.getCar().getRegistrationNumber());
+			parkingInvoices.remove(parkingInvoice.getParkingLot().getSlotNumber());
 			availableSlots.add(parkingInvoice.getParkingLot().getSlotNumber());
 			Collections.sort(availableSlots);
-			System.out.println("availableSlots"+availableSlots.size());
 			System.out.println("Slot number "+slotNumber+" is free");
 			
 		}else
@@ -57,7 +54,7 @@ public class ParkingLotServiceImpl implements ParkingLotService {
 
 	
 	
-	public void getParkedSlotNumberBasedOnColor(String color) {
+	public String getParkedSlotNumberBasedOnColor(String color) {
 		StringBuilder builder = new StringBuilder();
 		
 		for (Map.Entry<Integer, ParkingInvoice> entry : parkingInvoices.entrySet()) {
@@ -68,22 +65,31 @@ public class ParkingLotServiceImpl implements ParkingLotService {
 		if(builder.toString().isEmpty()) {
 			System.out.println("No Cars present in GoJek Parking Lot with Color "+color);
 		}
-		System.out.println(builder.substring(1, builder.length()-1));
+		System.out.println(builder.substring(0, builder.length()-1));
+		
+		return builder.substring(0, builder.length()-1);
 
 	}
 	
-	public void getParkedSlotNumberBasedOnRegistrationNumber(String registrationNumber) {
+	public String getParkedSlotNumberBasedOnRegistrationNumber(String registrationNumber) {
 		
+		StringBuilder builder = new StringBuilder();
+
 		for (Map.Entry<Integer, ParkingInvoice> entry : parkingInvoices.entrySet()) {
 			if (registrationNumber.equals(entry.getValue().getCar().getRegistrationNumber())) {
-				System.out.println("Allocated slot number:"+entry.getValue().getParkingLot().getSlotNumber());
+				builder.append("Allocated slot number:"+entry.getValue().getParkingLot().getSlotNumber());
 			}
 		}
+		if(builder.toString().isEmpty()) {
+			System.out.println("Not found");
+		}
+		System.out.println(builder);
 		
+		return builder.toString();
 
 	}
 	
-	public void getParkedCarsRegNumberBasedOnColor(String color) {
+	public String getParkedCarsRegNumberBasedOnColor(String color) {
 
 		StringBuilder builder = new StringBuilder();
 
@@ -97,7 +103,9 @@ public class ParkingLotServiceImpl implements ParkingLotService {
 		if(builder.toString().isEmpty()) {
 			System.out.println("No Cars present in GoJek Parking Lot with Color "+color);
 		}
+		
 		System.out.println(builder.substring(1, builder.length()-1));
+		return builder.substring(0, builder.length()-1);
 
 	}
 	
@@ -115,13 +123,11 @@ public class ParkingLotServiceImpl implements ParkingLotService {
 
 	public void createParkingLot(int totalSlots) {
 
-		availableSlots=new ArrayList<Integer>();
 		this.setTotalParkingSlots(totalSlots);
 
 		for (int i = 1; i <= totalSlots; i++) {
 			availableSlots.add(i);
 		}
-		this.parkingInvoices = new HashMap<Integer, ParkingInvoice>();
 		Collections.sort(availableSlots);
 		System.out.println("Created a parking lot with "+totalSlots+" slots");
 	}

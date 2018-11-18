@@ -17,6 +17,7 @@ public class ParkingLotCommandExecution {
 	ParkingLotService parkingLotService = new ParkingLotServiceImpl();
 
 	public void executeCommandsViaFile(String fileName) throws IOException, ParkingLotException {
+		System.out.println("Reading from file an input");
 
 		List<String> commands = Files.readAllLines(Paths.get(fileName));
 		for (String command : commands) {
@@ -73,7 +74,7 @@ public class ParkingLotCommandExecution {
 			try {
 				executeCommand(command);
 			} catch (Exception e) {
-
+				sc.close();
 			}
 
 		}

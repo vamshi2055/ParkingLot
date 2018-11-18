@@ -14,10 +14,10 @@ public interface ParkingLotService {
 
 	public void exitParkingLot(int slotNumber) throws ParkingLotException;
 
-	public void getParkedCarsRegNumberBasedOnColor(String color);
+	public String getParkedCarsRegNumberBasedOnColor(String color);
    
-	public void getParkedSlotNumberBasedOnColor(String color);
+	public String getParkedSlotNumberBasedOnColor(String color);
 
-	public void getParkedSlotNumberBasedOnRegistrationNumber(String registrationNumber);
+	public String getParkedSlotNumberBasedOnRegistrationNumber(String registrationNumber);
 
 }
