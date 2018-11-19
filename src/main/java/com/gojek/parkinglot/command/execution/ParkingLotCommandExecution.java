@@ -62,6 +62,8 @@ public class ParkingLotCommandExecution {
 
 		} else if (command.startsWith("slot_number_for_registration_number")) {
 			parkingLotService.getParkedSlotNumberBasedOnRegistrationNumber(split[1]);
+		}else {
+			System.out.println("Invalid Command");
 		}
 
 	}

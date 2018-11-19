@@ -4,10 +4,6 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import com.gojek.parkinglot.command.execution.ParkingLotCommandExecution;
-import com.gojek.parkinglot.model.Car;
-import com.gojek.parkinglot.model.ParkingInvoice;
-import com.gojek.parkinglot.service.ParkingLotService;
-import com.gojek.parkinglot.service.ParkingLotServiceImpl;
 import com.gojek.parkinglot.utilities.ParkingLotException;
 
 
