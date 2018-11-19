@@ -1,4 +1,4 @@
-Problem Statement
+# Problem Statement
 
 I own a parking lot that can hold up to 'n' cars at any given point in time. Each slot is
 given a number starting at 1 increasing with increasing distance from the entry point
@@ -15,9 +15,9 @@ the ticket which then marks the slot they were using as being available.
 Due to government regulation, the system should provide me with the ability to find
 out:
 
-● Registration numbers of all cars of a particular colour.
-● Slot number in which a car with a given registration number is parked.
-● Slot numbers of all slots where a car of a particular colour is parked.
+1)Registration numbers of all cars of a particular colour.
+2) Slot number in which a car with a given registration number is parked.
+3) Slot numbers of all slots where a car of a particular colour is parked.
 
 We interact with the system via a simple set of commands which produce a specific
 output. Please take a look at the example below, which includes all the commands
@@ -48,6 +48,11 @@ mvn clean install
 # Execution Commands
 
 java -jar target\parkinglot-0.0.1-SNAPSHOT.jar
+
+# Execute with a file input
+
+java -jar target\parkinglot-0.0.1-SNAPSHOT.jar input.txt
+
 
 # Input:
 
@@ -89,8 +94,4 @@ A-01-HH-1234,KA-01-HH-9999,KA-01-P-333
 1,2,4
 Allocated slot number:6
 Not found
-```
 
-# Execute with a file input
-
-java -jar target\parkinglot-0.0.1-SNAPSHOT.jar input.txt
