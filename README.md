@@ -49,7 +49,7 @@ mvn clean install
 
 java -jar target\parkinglot-0.0.1-SNAPSHOT.jar
 
-# Execute with a file input
+#Execute with a file input
 
 java -jar target\parkinglot-0.0.1-SNAPSHOT.jar input.txt
 
