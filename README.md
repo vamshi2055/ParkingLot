@@ -56,21 +56,21 @@ java -jar target\parkinglot-0.0.1-SNAPSHOT.jar input.txt
 
 # Input:
 
-create_parking_lot 6
-park KA-01-HH-1234 White
-park KA-01-HH-9999 White
-park KA-01-BB-0001 Black
-park KA-01-HH-7777 Red
-park KA-01-HH-2701 Blue
-park KA-01-HH-3141 Black
-leave 4
-status
-park KA-01-P-333 White
-park DL-12-AA-9999 White
-registration_numbers_for_cars_with_colour White
-slot_numbers_for_cars_with_colour White
-slot_number_for_registration_number KA-01-HH-3141
-slot_number_for_registration_number MH-04-AY-1111
+create_parking_lot 6<br />
+park KA-01-HH-1234 White<br />
+park KA-01-HH-9999 White<br />
+park KA-01-BB-0001 Black<br />
+park KA-01-HH-7777 Red<br />
+park KA-01-HH-2701 Blue<br />
+park KA-01-HH-3141 Black<br />
+leave 4<br />
+status<br />
+park KA-01-P-333 White<br />
+park DL-12-AA-9999 White<br />
+registration_numbers_for_cars_with_colour White<br />
+slot_numbers_for_cars_with_colour White<br />
+slot_number_for_registration_number KA-01-HH-3141<br />
+slot_number_for_registration_number MH-04-AY-1111<br />
 
 # Output:
 
