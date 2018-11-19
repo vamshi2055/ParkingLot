@@ -95,3 +95,7 @@ A-01-HH-1234,KA-01-HH-9999,KA-01-P-333<br />
 Allocated slot number:6<br />
 Not found<br />
 
+
+# Execute as a shell script on Linux
+
+./parkinglot.sh
